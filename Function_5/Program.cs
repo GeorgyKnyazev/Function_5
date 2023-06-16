@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Function_5
 {
@@ -8,29 +6,40 @@ namespace Function_5
     {
         static void Main(string[] args)
         {
-            int[] array = { 1,2,3,4,5,6,7,8,9,10};
-            ShuffleArray(array);
+            int[] nambers = { 1,2,3,4,5,6,7,8,9,10};
 
-            for (int j = 0; j < array.Length; j++)
-            {
-                Console.WriteLine(array[j]);
-            }
-            Console.ReadKey();
+            WriteArray(nambers);
+
+            Console.WriteLine();
+
+            ShuffleArray(nambers);
+            
+            WriteArray(nambers);
+
+            Console.ReadLine();
         }
+
         static void ShuffleArray(int[] array)
         {
-            Random rand = new Random();
+            Random random = new Random();
+            int tempNumber;
+            int randomNumber;
             
             for (int i = 0; i < array.Length; i++)
             {
-                Swap(array, i, i + rand.Next(array.Length - i));
+                randomNumber = random.Next(array.Length - i);
+                tempNumber = array[i];
+                array[i] = array[randomNumber];
+                array[randomNumber] = tempNumber;
+
             }
         }
-        static void Swap (int[] array, int i, int random)
+        static void WriteArray(int[] array)
         {
-            int tempNumber = array[i];
-            array[i] = array[random];
-            array[random] = tempNumber;
+            for (int h = 0; h < array.Length; h++)
+            {
+                Console.Write(array[h]);
+            }
         }
     }
 }
